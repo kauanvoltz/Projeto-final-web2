@@ -105,54 +105,28 @@
     <div class=" box">
     <form action="">
         <fieldset>
-            <legend> <b> Cadastro de clientes </b></legend>
+            <legend> <b> Cadastro de veículos </b></legend>
             <br>
             <div class="inputBox">
-                <input type="text" name="nome" id="nome" class="inputUser" required>
-                <label for="nome" class="labelInput">Nome</label>
+                <input type="text" name="modelo" id="modelo" class="inputUser" required>
+                <label for="modelo" class="labelInput">Modelo do veículo</label>
             </div>
             <br>
             <div class="inputBox">
-                <input type="text" name="cpf" id="cpf" class="inputUser" required>
-                <label for="cpf" class="labelInput">CPF</label>
+                <input type="text" name="placa" id="placa" class="inputUser" required>
+                <label for="placa" class="labelInput">Placa</label>
             </div>
             <br>
             <div class="inputBox">
-                <input type="text" name="telefone" id="telefone" class="inputUser" required>
-                <label for="telefone" class="labelInput">Telefone</label>
-            </div>
-            <br>
-            <p><b> Endereço </b></p>
-            <br>
-            <div class="inputBox">
-                <input type="text" name="endereco" id="endereco" class="inputUser" required>
-                <label for="endereco" class="labelInput">Logradouro</label>
+                <input type="number" name="ano" id="ano" class="inputUser" required>
+                <label for="ano" class="labelInput">Ano</label>
             </div>
             <br>
             <div class="inputBox">
-                <input type="number" name="numero" id="numero" class="inputUser" required>
-                <label for="numero" class="labelInput">Número residêncial</label>
+                <input type="text" name="cor" id="cor" class="inputUser" required>
+                <label for="cor" class="labelInput">Cor</label>
             </div>
-            <br>
-            <div class="inputBox">
-                <input type="text" name="cep" id="cep" class="inputUser" required>
-                <label for="cep" class="labelInput">CEP</label>
-            </div>
-            <br>
-            <div class="inputBox">
-                <input type="text" name="bairro" id="bairro" class="inputUser" required>
-                <label for="bairro" class="labelInput">Bairro</label>
-            </div>
-            <br>
-            <div class="inputBox">
-                <input type="text" name="cidade" id="cidade" class="inputUser" required>
-                <label for="cidade" class="labelInput">Cidade</label>
-            </div>
-            <br>
-            <div class="inputBox">
-                <input type="text" name="complemento" id="complemento" class="inputUser">
-                <label for="complemento" class="labelInput">Complemento</label>
-            </div>
+            
             <br>
             <div>
             <button type="button" name="submit" id="voltar" onclick="goBack()"> Voltar</button>
