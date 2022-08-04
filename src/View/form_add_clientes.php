@@ -108,29 +108,29 @@
             <legend> <b> Cadastro de clientes </b></legend>
             <br>
             <div class="inputBox">
-                <input type="text" name="nome" id="nome" class="inputUser" required min="1" max="50">
+                <input type="text" name="nome" id="nome" class="inputUser" required min="1" >
                 <label for="nome" class="labelInput">Nome</label>
             </div>
             <br>
             <div class="inputBox">
-                <input type="text" name="cpf" id="cpf" class="inputUser" required  min="10" max="11">
+                <input type="text" name="cpf" id="cpf" class="inputUser" required  min="1">
                 <label for="cpf" class="labelInput">CPF</label>
             </div>
             <br>
             <div class="inputBox">
-                <input type="text" name="telefone" id="telefone" class="inputUser" required min="1" max="15">
+                <input type="text" name="telefone" id="telefone" class="inputUser" required min="1" >
                 <label for="telefone" class="labelInput">Telefone</label>
             </div>
             <br>
             <p><b> Endereço </b></p>
             <br>
             <div class="inputBox">
-                <input type="text" name="endereco" id="endereco" class="inputUser" required  min="1" max="35">
+                <input type="text" name="endereco" id="endereco" class="inputUser" required  min="1" >
                 <label for="endereco" class="labelInput">Logradouro</label>
             </div>
             <br>
             <div class="inputBox">
-                <input type="number" name="numero" id="numero" class="inputUser" required min="1" max="10">
+                <input type="number" name="numero" id="numero" class="inputUser" required min="1">
                 <label for="numero" class="labelInput">Número residêncial</label>
             </div>
             <br>
