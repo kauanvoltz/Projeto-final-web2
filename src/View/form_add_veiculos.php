@@ -108,22 +108,22 @@
             <legend> <b> Cadastro de veículos </b></legend>
             <br>
             <div class="inputBox">
-                <input type="text" name="modelo" id="modelo" class="inputUser" required>
+                <input type="text" name="modelo" id="modelo" class="inputUser" required min="1" max="25">
                 <label for="modelo" class="labelInput">Modelo do veículo</label>
             </div>
             <br>
             <div class="inputBox">
-                <input type="text" name="placa" id="placa" class="inputUser" required>
+                <input type="text" name="placa" id="placa" class="inputUser" required min="1" max="7">
                 <label for="placa" class="labelInput">Placa</label>
             </div>
             <br>
             <div class="inputBox">
-                <input type="number" name="ano" id="ano" class="inputUser" required>
+                <input type="number" name="ano" id="ano" class="inputUser" required min="1" max="4">
                 <label for="ano" class="labelInput">Ano</label>
             </div>
             <br>
             <div class="inputBox">
-                <input type="text" name="cor" id="cor" class="inputUser" required>
+                <input type="text" name="cor" id="cor" class="inputUser" required min="1" max="20"> 
                 <label for="cor" class="labelInput">Cor</label>
             </div>
             
