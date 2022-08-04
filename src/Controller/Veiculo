@@ -49,6 +49,31 @@ if (!isset($_GET['operation'])){
 
         $error = array();
 
+        
+        if(!Validacao::validarPlaca($placaDoVeiculo)){
+            array_push($error, "A placa do veículo deve conter 7 caracteres!");
+        }
+
+        if (!Validacao::validarModelo($modeloDoVeiculo)){
+            array_push($error, "O modelo do veiculo deve conter pelo menos 1 caracter!");
+        }
+
+        if(!Validacao::validarAno($anoDoVeiculo)){
+            array_push($error, "O ano do modelo deve conter 4 caracters!");
+        }
+
+        if(!Validacao::validarCor($corDoVeiculo)){
+            array_push($error, "A cor do veiculo deve conter pelo menos 4 caracteres!");
+        }
+
+        if($error){
+            Redirect::redirect(
+                message:$error,
+                type:'warning'
+            );
+       
+        }
+
               
 
     }
