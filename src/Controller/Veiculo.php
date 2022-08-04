@@ -3,7 +3,7 @@
 namespace APP\Controller;
 
 use APP\Model\Veiculo;
-use APP\Model\Redirect;
+use APP\Utils\Redirect;
 use APP\Model\Validacao;
 
 
