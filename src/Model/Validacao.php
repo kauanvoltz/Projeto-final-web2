@@ -27,6 +27,6 @@ class Validacao
     }
     public static function validarCor(string $cor)
     {
-        return mb_strlen($cor) > 4;
+        return mb_strlen($cor) >= 4;
     }
 }

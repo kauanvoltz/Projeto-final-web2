@@ -19,4 +19,8 @@ class Veiculo
         $this->cor = $cor;
         $this->id_veiculo = $id_veiculo;
     }
+    public function __get($attribute)
+    {
+        return $this->$attribute;
+    }
 }

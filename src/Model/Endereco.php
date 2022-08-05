@@ -23,6 +23,10 @@ class Endereco
         $this->id = $id;
         
     }
+    public function __get($attribute)
+    {
+        return $this->$attribute;
+    }
 
 
 
