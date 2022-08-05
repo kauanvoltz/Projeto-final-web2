@@ -103,7 +103,7 @@
 
 
     <div class=" box">
-    <form action="">
+    <form action="../Controller/Veiculo.php?operation=inserir" method="POST">
         <fieldset>
             <legend> <b> Cadastro de veículos </b></legend>
             <br>

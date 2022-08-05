@@ -3,9 +3,9 @@
 namespace APP\Controller;
 
 use APP\Model\Veiculo;
+use APP\Model\DAO\VeiculoDAO;
 use APP\Utils\Redirect;
 use APP\Model\Validacao;
-use APP\Model\DAO\VeiculoDAO;
 use PDOException;
 
 require '../../vendor/autoload.php';
