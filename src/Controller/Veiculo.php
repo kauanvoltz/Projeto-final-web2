@@ -39,7 +39,7 @@ if (!isset($_GET['operation'])){
             session_start();
             Redirect::redirect(
                 type:'error',
-                message: 'Requidição inválida!'
+                message: 'Requisição inválida!'
             );
         }
         $placaDoVeiculo = $_POST["placa"];
@@ -75,7 +75,7 @@ if (!isset($_GET['operation'])){
             try{
                 $dao = VeiculoDAO();
                 $resultado = $dao->insert($veiculo);
-                if ($result) {
+                if ($resultado) {
                     Redirect::redirect(
                         message: "O veículo $modeloDoVeiculo foi cadastrado com sucesso!"
                     );
@@ -113,7 +113,7 @@ if (!isset($_GET['operation'])){
         $code = (float) $_GET['code'];
         $error = array();
 
-        if (!Validation::validarNumero($code)){
+        if (!Validacao::validarNumero($code)){
             array_push($error, 'Código do veículo inválido!');
         }
 
@@ -153,3 +153,47 @@ if (!isset($_GET['operation'])){
             Redirect::redirect(message:'Lamento, não localizamos o veículo em nossa base de dados', type:'error');
         }
     }
+    fuction editarVeiculos()
+    {
+        if(empty($_POST)){
+            Redirect::redirect(message: 'Requisição inválida!', type: 'error');
+        }
+
+        $code = $_POST['code'];
+        $placa = $_POST['placa'];
+        $modelo = $_POST['modelo'];
+        $ano = $_POST['ano'];
+        $cor = $_POST['cor'];
+
+        $error = array();
+
+        if(!Validacao::validarPlaca($placa)){
+            array_push($error, "A placa do veículo deve conter 7 caracteres!");
+        }
+
+        if (!Validacao::validarModelo($modelo)){
+            array_push($error, "O modelo do veiculo deve conter pelo menos 1 caracter!");
+        }
+
+        if(!Validacao::validarAno($ano)){
+            array_push($error, "O ano do modelo deve conter 4 caracters!");
+        }
+
+        if(!Validacao::validarCor($cor)){
+            array_push($error, "A cor do veiculo deve conter pelo menos 4 caracteres!");
+        }
+
+        $dao = new VeiculoDAO();
+        try{
+            $resultado = $dao->update($veiculo);
+        }catch(PDOException $e) {
+            Redirect::redirect("Lamento, houve um erro inesperado!", type 'error');
+        }
+        if ($resultado) {
+            Redirect::redirect(message: 'Veículo atualizado com sucesso!');
+        }else{
+            Redirect::redirect(message: ['Não foi possivel atualizar os dados do veículo!']);
+        }
+    }
+
+
