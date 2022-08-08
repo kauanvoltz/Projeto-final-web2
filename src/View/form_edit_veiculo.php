@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Adicionar veiculos</title>
+    <title>Editar Veiculos</title>
 
     <style>
         input[type=number]::-webkit-inner-spin-button,
@@ -101,36 +101,40 @@
 
 <body >
 
-
+<?php
+session_start();
+$veiculo = $_SESSION['info_veiculo'];
+?>
     <div class=" box">
-    <form action="../Controller/Veiculo.php?operation=inserir" method="POST">
-        <fieldset>
-            <legend> <b> Cadastro de veículos </b></legend>
+    <form action="../Controller/Veiculo.php?operation=editar" method="POST">
+    <input type="hidden" name="code" value="<?= $veiculo ['id_veiculo'] ?>">   
+    <fieldset>
+            <legend> <b> Editar veículos </b></legend>
             <br>
             <div class="inputBox">
-                <input type="text" name="modelo" id="modelo" class="inputUser" required min="1" >
+                <input type="text" name="modelo" id="modelo" class="inputUser" required min="1" value="<?=$veiculo ['modelo'] ?>">
                 <label for="modelo" class="labelInput">Modelo do veículo</label>
             </div>
             <br>
             <div class="inputBox">
-                <input type="text" name="placa" id="placa" class="inputUser" required min="1" >
+                <input type="text" name="placa" id="placa" class="inputUser" required min="1" value="<?=$veiculo ['placa'] ?>">
                 <label for="placa" class="labelInput">Placa</label>
             </div>
             <br>
             <div class="inputBox">
-                <input type="number" name="ano" id="ano" class="inputUser" required min="1" >
+                <input type="number" name="ano" id="ano" class="inputUser" required min="1" value="<?=$veiculo["ano"]?>" >
                 <label for="ano" class="labelInput">Ano</label>
             </div>
             <br>
             <div class="inputBox">
-                <input type="text" name="cor" id="cor" class="inputUser" required min="1"> 
+                <input type="text" name="cor" id="cor" class="inputUser" required min="1" value="<?=$veiculo["cor"]?>"> 
                 <label for="cor" class="labelInput">Cor</label>
             </div>
             
             <br>
             <div>
             <button type="button" name="submit" id="voltar" onclick="goBack()"> Voltar</button>
-            <button type="submit" name="submit" id="cadastrar"> Cadastrar</button>
+            <button type="submit" name="submit" id="cadastrar"> Editar</button>
             </div>
         </fieldset>
     </form>
