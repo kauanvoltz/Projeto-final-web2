@@ -72,8 +72,8 @@
                    <?= $veiculo ['cor'] ?>
                    </td>
                    <td>
-                    <a href="../Controller/Veiculo.php?operation=consultar&code=<? $veiculo["code"]?>"> Editar</a>
-                    <a href="../Controller/Veiculo.php?operation=remover&code=<? $veiculo["code"]?>"> Remover</a>
+                    <a href="../Controller/Veiculo.php?operation=consultar&code=<?= $veiculo["id_veiculo"]?>"> Editar</a>
+                    <a href="../Controller/Veiculo.php?operation=remover&code=<?= $veiculo["id_veiculo"]?>"> Remover</a>
                    </td>
                 </tr>
                 <?php 
