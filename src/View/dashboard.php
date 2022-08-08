@@ -37,6 +37,9 @@
               <li class="nav-item">
                 <a class="nav-link" aria-current="page" href="src/Controller/Veiculo.php?operation=listar">Listar veiculos</a>
               </li>
+              <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="../Controller/User.php?operation=logout">Sair</a>
+              </li>
             </ul>
           </div>
         </div>
