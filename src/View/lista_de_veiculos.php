@@ -22,7 +22,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link " aria-current="page" href="../../dashboard.php">Home</a>
+                        <a class="nav-link " aria-current="page" href="dashboard.php">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link " aria-current="page" href="form_add_clientes.php">Cadastrar clientes</a>

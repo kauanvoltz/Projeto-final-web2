@@ -26,16 +26,16 @@
                 <a class="nav-link disabled" aria-current="page" href="#">Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link " aria-current="page"  href="src/view/form_add_clientes.php">Cadastrar clientes</a>
+                <a class="nav-link " aria-current="page"  href="form_add_clientes.php">Cadastrar clientes</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link " aria-current="page"  href="src/View/form_add_veiculos.php">Cadastrar veiculos</a>
+                <a class="nav-link " aria-current="page"  href="form_add_veiculos.php">Cadastrar veiculos</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" aria-current="page"  href="#">Listar clientes</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" aria-current="page" href="src/Controller/Veiculo.php?operation=listar">Listar veiculos</a>
+                <a class="nav-link" aria-current="page" href="../Controller/Veiculo.php?operation=listar">Listar veiculos</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" aria-current="page" href="../Controller/User.php?operation=logout">Sair</a>
@@ -54,13 +54,13 @@
         </div>
         <div class="carousel-inner">
           <div class="carousel-item active">
-            <img src="./src/view/img/direitos-ao-deixar-o-carro-no-estacionamento-2.jpg" class="d-block w-100" alt="...">
+            <img src="img/direitos-ao-deixar-o-carro-no-estacionamento-2.jpg" class="d-block w-100" alt="...">
           </div>
           <div class="carousel-item">
-            <img src="./src/view/img/carros-estacionados-novos-e-velhos-19807252.jpg" class="d-block w-100" alt="...">
+            <img src="img/carros-estacionados-novos-e-velhos-19807252.jpg" class="d-block w-100" alt="...">
           </div>
           <div class="carousel-item">
-            <img src="./src/view/img/parking-825371_1920.webp" class="d-block w-100" alt="...">
+            <img src="img/parking-825371_1920.webp" class="d-block w-100" alt="...">
           </div>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
