@@ -38,7 +38,7 @@ function login()
         if (password_verify($password, $user['password'])){
             session_start();
             $_SESSION['auth'] = $login;
-            header('location:../View/index.html');
+            header('location:../View/dashboard.php');
         } else {
             Redirect::redirect(message: ['Nenhum usuário foi localizado com essas credeciais'], type: 'warning');
         }
@@ -50,5 +50,5 @@ function logout()
 {
     session_start();
     session_destroy();
-    header('location:../../home.php');
+    header('location:../../index.html');
 }
