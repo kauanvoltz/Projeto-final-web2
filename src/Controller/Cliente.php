@@ -163,12 +163,12 @@ function listarCliente()
         $cliente = $dao->findAll();
         if($cliente) {
             $_SESSION['lista_de_clientes'] = $cliente;
-            header('location:../View/lista_de_cliente.php');
+            header('location:../View/lista_de_clientes.php');
         }else{
             Redirect::redirect(message:['Não existem clientes cadastrados!'], type: 'error');
         }
     }catch(PDOException $e){
-        Redirect::redirect("Lamento, hoive um erro inseperado!", type:'erro');
+        Redirect::redirect("Lamento, houve um erro inesperado!", type:'error');
     }
 }
 
@@ -188,7 +188,7 @@ function consultarCliente()
     if($resultado) {
         session_start();
         $_SESSION['cliente_info'] = $resultado;
-        header("location:../View/form_edit_cliente.php");
+        header("location:../View/form_edit_clientes.php");
     }else{
         Redirect::redirect(message: 'Lamento, não localizamos o cliente em nossa base de dados', type:'error');
     }
@@ -205,7 +205,8 @@ function editarCliente()
     $cpfDoCliente = $_POST['cpf'];
     $telefoneDoCliente = $_POST['telefone'];
     $enderecoDoCliente = $_POST['endereco'];
-    $numeroDoEndereco = $_POST['numero'];        $cepDoEndereco = $_POST['cep'];
+    $numeroDoEndereco = $_POST['numero'];      
+    $cepDoEndereco = $_POST['cep'];
     $bairroDoEndereco = $_POST['bairro'];
     $cidadeDoEndereco = $_POST['cidade'];
     $complementoDoEndereco = $_POST['complemento'];
