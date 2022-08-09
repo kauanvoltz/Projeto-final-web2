@@ -17,4 +17,8 @@ class Cliente
         $this->id = $id;
     }
 
+    public function __get($attribute)
+    {
+        return $this->$attribute;
+    }
 }

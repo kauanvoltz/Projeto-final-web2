@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Adicionar clientes</title>
+    <title>Adicionar veiculos</title>
 
     <style>
         input[type=number]::-webkit-inner-spin-button,
@@ -103,7 +103,7 @@
 
 
     <div class=" box">
-    <form action="">
+    <form action="../Controller/Veiculo.php?operation=inserir" method="POST">
         <fieldset>
             <legend> <b> Cadastro de veículos </b></legend>
             <br>
