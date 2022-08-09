@@ -5,6 +5,7 @@ namespace APP\Controller;
 use APP\Model\Veiculo;
 use APP\Utils\Redirect;
 use APP\Model\Validacao;
+use APP\Model\DAO\VeiculoDAO;
 use PDOException;
 
 require '../../vendor/autoload.php';
@@ -71,9 +72,10 @@ if (!isset($_GET['operation'])){
                 message:$error,
                 type:'warning'
             );
+            
 
             try{
-                $dao = VeiculoDAO();
+                $dao = new VeiculoDAO();
                 $resultado = $dao->insert($veiculo);
                 if ($resultado) {
                     Redirect::redirect(
@@ -104,7 +106,7 @@ if (!isset($_GET['operation'])){
             Redirect::redirect("Lamento, houve um erro inesperado!", type:'error');
         }
     }
-    function removerVeiculos()
+    function removerVeiculo()
     {
         if (empty($_GET['code'])) {
             Redirect::redirect(message: 'O código do veículo não foi informado!', type: 'error');
@@ -122,7 +124,7 @@ if (!isset($_GET['operation'])){
         }else{
             try {
                 $dao = new VeiculoDAO();
-                $resultado = $dao->delte($code);
+                $resultado = $dao->delete($code);
                 if($resultado){
                     Redirect::redirect(message: 'Veículo removido com sucesso!');
                 } else{
@@ -153,7 +155,7 @@ if (!isset($_GET['operation'])){
             Redirect::redirect(message:'Lamento, não localizamos o veículo em nossa base de dados', type:'error');
         }
     }
-    fuction editarVeiculos()
+    function editarVeiculos()
     {
         if(empty($_POST)){
             Redirect::redirect(message: 'Requisição inválida!', type: 'error');
@@ -187,7 +189,7 @@ if (!isset($_GET['operation'])){
         try{
             $resultado = $dao->update($veiculo);
         }catch(PDOException $e) {
-            Redirect::redirect("Lamento, houve um erro inesperado!", type 'error');
+            Redirect::redirect("Lamento, houve um erro inesperado!", type: 'error');
         }
         if ($resultado) {
             Redirect::redirect(message: 'Veículo atualizado com sucesso!');
