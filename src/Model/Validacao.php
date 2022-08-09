@@ -41,7 +41,7 @@ class Validacao
         return mb_strlen($endereco) >= 5;
     }
     public static function validarCep(int $cep){
-        return $cep == 7;
+        return mb_strlen($cep) == 7;
     }
     public static function validarBairro(string $bairro){
         return mb_strlen($bairro) >= 5;

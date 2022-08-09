@@ -44,7 +44,7 @@ function inserirCliente()
             type: 'error',
             message: 'Requisição inválida!'
         );
-
+    }
         $nomeDoCliente = $_POST['nome'];
         $cpfDoCliente = $_POST['cpf'];
         $telefoneDoCliente = $_POST['telefone'];
@@ -126,7 +126,7 @@ function inserirCliente()
                 Redirect::redirect("Lamento, houve um erro inesperado!", type: 'error');
             }
         }
-    }
+    
 }
 function removerCliente()
 {
