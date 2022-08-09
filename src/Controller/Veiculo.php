@@ -55,6 +55,13 @@ function inserirVeiculo()
         array_push($error, "A placa do veículo deve conter 7 caracteres!");
     }
 
+    $error = array();
+
+
+    if (!Validacao::validarPlaca($placa)) {
+        array_push($error, "A placa do veículo deve conter 7 caracteres!");
+    }
+
     if (!Validacao::validarModelo($modelo)) {
         array_push($error, "O modelo do veiculo deve conter pelo menos 1 caracter!");
     }
@@ -79,7 +86,7 @@ function inserirVeiculo()
         ano: $ano,
         cor: $cor
     );
-    $dao =  new VeiculoDAO();
+    $dao = new VeiculoDAO();
     try {
         $resultado = $dao->insert($veiculo);
     } catch (PDOException $e) {
@@ -93,8 +100,6 @@ function inserirVeiculo()
         Redirect::redirect("Lamento, não foi possivel cadastrar o veículo $modelo", type: 'error');
     }
 }
-
-
 
 function listarVeiculo()
 {
