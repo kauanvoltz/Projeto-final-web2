@@ -106,21 +106,32 @@ function inserirCliente()
                 complemento: $complementoDoENdereco,
                 ),
                 id: $id = 0
-            ),
+            );
             try{
                 $dao = new ClienteDAO();
-                $resultado = $dao->inserir($cliente);
+                $resultado = $dao->insert($cliente);
                 if($resultado){
                     Redirect::redirect(
                         message: "O cliente $cpfDoCliente foi cadastrado com sucesso!"
                     );
                 }else{
-                    Redirect::redirec("Lamento, não foi possível cadastrar o cliente $cpfDpCLiente", type:'error');
+                    Redirect::redirect("Lamento, não foi possível cadastrar o cliente $cpfDoCliente", type:'error');
                 }
             } catch(PDOException $e){
                 Redirect::redirect("Lamento, houve um erro inesperado!", type: 'error');
             }
 
         }
+    }
+}
+function removerCliente()
+{
+    if(empty($_GET['code'])){
+        Redirect::redirect(message: 'O código do cliente não foi informado', type:'error');
+    }
+    $code = (float) $_GET['code'];
+    $error = array();
+    if (!Validacao::validarNumero($code)){
+
     }
 }
