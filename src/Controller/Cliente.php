@@ -56,10 +56,10 @@ function inserirCliente()
         $complementoDoEndereco = $_POST['complemento'];
 
         $error = array();
-        if(!Validacao::validarNome($nomeDoCliente)){
+        if (!Validacao::validarNome($nomeDoCliente)) {
             array_push($error, "O nome do cliente deve conter no mínimo 2 caracteres!");
         }
-        
+
         if (!Validacao::validarCpf($cpfDoCliente)) {
             array_push($error, "O CPF do cliente deve conter 11 caracteres!");
         }
@@ -99,7 +99,7 @@ function inserirCliente()
             );
         } else {
             $cliente = new Cliente(
-                nome:$nomeDoCliente,
+                nome: $nomeDoCliente,
                 cpf: $cpfDoCliente,
                 telefone: $telefoneDoCliente,
                 endereco: new Endereco(
@@ -157,47 +157,47 @@ function removerCliente()
 
 function listarCliente()
 {
-    try{
+    try {
         session_start();
         $dao = new ClienteDAO();
         $cliente = $dao->findAll();
-        if($cliente) {
+        if ($cliente) {
             $_SESSION['lista_de_clientes'] = $cliente;
             header('location:../View/lista_de_cliente.php');
-        }else{
-            Redirect::redirect(message:['Não existem clientes cadastrados!'], type: 'error');
+        } else {
+            Redirect::redirect(message: ['Não existem clientes cadastrados!'], type: 'error');
         }
-    }catch(PDOException $e){
-        Redirect::redirect("Lamento, hoive um erro inseperado!", type:'erro');
+    } catch (PDOException $e) {
+        Redirect::redirect("Lamento, hoive um erro inseperado!", type: 'erro');
     }
 }
 
 function consultarCliente()
 {
-    if(empty($_GET['code'])){
+    if (empty($_GET['code'])) {
         Redirect::redirect(message: 'O código do cliente não foi informado!');
     }
     $code = $_GET['code'];
     $dao = new ClienteDAO();
-    try{
+    try {
         $resultado = $dao->findOne($code);
-    }catch(PDOException $e){
-        Redirect::redirect("Lamento, houve um erro inesperado!", type:'error');
+    } catch (PDOException $e) {
+        Redirect::redirect("Lamento, houve um erro inesperado!", type: 'error');
     }
 
-    if($resultado) {
+    if ($resultado) {
         session_start();
         $_SESSION['cliente_info'] = $resultado;
         header("location:../View/form_edit_cliente.php");
-    }else{
-        Redirect::redirect(message: 'Lamento, não localizamos o cliente em nossa base de dados', type:'error');
+    } else {
+        Redirect::redirect(message: 'Lamento, não localizamos o cliente em nossa base de dados', type: 'error');
     }
 }
 
 function editarCliente()
 {
-    if(empty($_POST)){
-        Redirect::redirect(message:'Requisição inválida!', type:'error');
+    if (empty($_POST)) {
+        Redirect::redirect(message: 'Requisição inválida!', type: 'error');
     }
 
     $code = $_POST['code'];
@@ -205,13 +205,14 @@ function editarCliente()
     $cpfDoCliente = $_POST['cpf'];
     $telefoneDoCliente = $_POST['telefone'];
     $enderecoDoCliente = $_POST['endereco'];
-    $numeroDoEndereco = $_POST['numero'];        $cepDoEndereco = $_POST['cep'];
+    $numeroDoEndereco = $_POST['numero'];
+    $cepDoEndereco = $_POST['cep'];
     $bairroDoEndereco = $_POST['bairro'];
     $cidadeDoEndereco = $_POST['cidade'];
     $complementoDoEndereco = $_POST['complemento'];
 
     $error = array();
-    if(!Validacao::validarNome($nomeDoCliente)){
+    if (!Validacao::validarNome($nomeDoCliente)) {
         array_push($error, "O nome do cliente deve conter no mínimo 2 caracteres!");
     }
 
@@ -252,20 +253,20 @@ function editarCliente()
         cpf: $cpfDoCliente,
         telefone: $telefoneDoCliente,
         endereco: new Endereco(
-            endereco:$enderecoDoCliente,
-            numero:$numeroDoEndereco,
-            cep:$cepDoEndereco,
-            bairro:$bairroDoEndereco,
-            cidade:$cidadeDoEndereco,
-            complemento:$complementoDoEndereco,
+            endereco: $enderecoDoCliente,
+            numero: $numeroDoEndereco,
+            cep: $cepDoEndereco,
+            bairro: $bairroDoEndereco,
+            cidade: $cidadeDoEndereco,
+            complemento: $complementoDoEndereco,
         ),
-        id:$code
+        id: $code
     );
     $dao = new ClienteDAO();
     $resultado = $dao->update($cliente);
-    if($resultado){
-        Redirect::redirect(message:'Cliente atualizado com sucesso!');
-    }else{
-        Redirect::redirect(message:['Não foi possível atualizar os dados do cliente']);
+    if ($resultado) {
+        Redirect::redirect(message: 'Cliente atualizado com sucesso!');
+    } else {
+        Redirect::redirect(message: ['Não foi possível atualizar os dados do cliente']);
     }
 }

@@ -105,7 +105,7 @@
 
 
     <div class=" box">
-    <form action="">
+    <form action="../Controller/Cliente.php?operation=inserir" method="POST">
         <fieldset>
             <legend> <b> Cadastro de clientes </b></legend>
             <br>
