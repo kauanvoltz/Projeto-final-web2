@@ -4,9 +4,9 @@ namespace APP\Model;
 
 class Validacao
 {
-    public static function validarNome(string $nome): bool 
+    public static function validarNome(string $nome): bool
     {
-        return mb_strlen($nome) > 2 ;
+        return mb_strlen($nome) > 2;
     }
 
     public static function validarNumero(float $numero)
@@ -28,5 +28,28 @@ class Validacao
     public static function validarCor(string $cor)
     {
         return mb_strlen($cor) >= 4;
+    }
+    public static function validarCpf(string $cpf)
+    {
+        return mb_strlen($cpf) == 11;
+    }
+    public static function validarTelefone(string $telefone)
+    {
+        return mb_strlen($telefone) >=9 && mb_strlen($telefone) < 14;
+    }
+    public static function validarEndereco(string $endereco){
+        return mb_strlen($endereco) >= 5;
+    }
+    public static function validarCep(int $cep){
+        return $cep == 7;
+    }
+    public static function validarBairro(string $bairro){
+        return mb_strlen($bairro) >= 5;
+    }
+    public static function validarCidade(string $cidade){
+        return mb_strlen($cidade) >= 5;
+    }
+    public static function validarComplemento(string $complemento){
+        return mb_strlen($complemento) >= 3;
     }
 }
