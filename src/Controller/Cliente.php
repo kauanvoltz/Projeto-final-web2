@@ -114,13 +114,14 @@ function inserirCliente()
             );
             try {
                 $dao = new ClienteDAO();
-                $resultado = $dao->insert($cliente);
+                $dao = new EnderecoDAO();
+                $resultado = $dao->insert($cliente->endereco);
                 if ($resultado) {
                     Redirect::redirect(
-                        message: "O cliente $cpfDoCliente foi cadastrado com sucesso!"
+                        message: "O cliente $nomeDoCliente foi cadastrado com sucesso!"
                     );
                 } else {
-                    Redirect::redirect("Lamento, não foi possível cadastrar o cliente $cpfDoCliente", type: 'error');
+                    Redirect::redirect("Lamento, não foi possível cadastrar o cliente $nomeDoCliente", type: 'error');
                 }
             } catch (PDOException $e) {
                 Redirect::redirect("Lamento, houve um erro inesperado!", type: 'error');
