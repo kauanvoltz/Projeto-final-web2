@@ -1,3 +1,4 @@
+<?php require_once '../Controller/auth.php'; ?>
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -10,7 +11,7 @@
     <title>Listagem de veiculos</title>
 </head>
 
-<body style="background-color: #343a40;" >
+<body style="background-color: #343a40;">
 
 
     <nav class="navbar navbar-dark bg-dark">
@@ -36,12 +37,15 @@
                     <li class="nav-item">
                         <a class="nav-link disabled" aria-current="page" href="#">Listar veiculos</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="../Controller/User.php?operation=logout">Sair</a>
+                    </li>
                 </ul>
             </div>
         </div>
-    </nav> 
+    </nav>
 
-<div class="table-responsive-md">
+    <div class="table-responsive-md">
         <table class="table table-dark table-sm">
             <thead class="">
                 <tr>
@@ -55,28 +59,27 @@
             </thead>
             <tbody class="table-group-divider">
                 <?php
-                session_start();
-                foreach($_SESSION['lista_de_veiculos'] as $veiculo) :  
+                foreach ($_SESSION['lista_de_veiculos'] as $veiculo) :
                 ?>
-                <tr>
-                    <td>
-                    <?= $veiculo ['modelo']?>
-                    </td>
-                    <td>
-                    <?= $veiculo ['placa']?>
-                    </td>
-                    <td>
-                   <?= $veiculo ['ano'] ?>
-                   </td>
-                   <td>
-                   <?= $veiculo ['cor'] ?>
-                   </td>
-                   <td>
-                    <a href="../Controller/Veiculo.php?operation=consultar&code=<?= $veiculo["id_veiculo"]?>"> Editar</a>
-                    <a href="../Controller/Veiculo.php?operation=remover&code=<?= $veiculo["id_veiculo"]?>"> Remover</a>
-                   </td>
-                </tr>
-                <?php 
+                    <tr>
+                        <td>
+                            <?= $veiculo['modelo'] ?>
+                        </td>
+                        <td>
+                            <?= $veiculo['placa'] ?>
+                        </td>
+                        <td>
+                            <?= $veiculo['ano'] ?>
+                        </td>
+                        <td>
+                            <?= $veiculo['cor'] ?>
+                        </td>
+                        <td>
+                            <a style="color: white;" href="../Controller/Veiculo.php?operation=consultar&code=<?= $veiculo["id_veiculo"] ?>"> Editar</a>
+                            <a style="color: white;"  href="../Controller/Veiculo.php?operation=remover&code=<?= $veiculo["id_veiculo"] ?>"> Remover</a>
+                        </td>
+                    </tr>
+                <?php
                 endforeach;
                 ?>
             </tbody>

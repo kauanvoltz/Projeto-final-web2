@@ -2,5 +2,5 @@
 
 session_start();
 if(empty($_SESSION['auth'])){
-    header('location:../../dashboard.php');
+    header('location:../../index.html');
 }

@@ -44,7 +44,7 @@ function inserirVeiculo()
         );
     }
     $placa = $_POST["placa"];
-    $modelo= $_POST["modelo"];
+    $modelo = $_POST["modelo"];
     $ano = $_POST['ano'];
     $cor = $_POST["cor"];
 
@@ -72,26 +72,25 @@ function inserirVeiculo()
             message: $error,
             type: 'warning'
         );
-    } else {
-        $veiculo = new Veiculo(
-            placa: $placa,
-            modelo: $modelo,
-            ano: $ano,
-            cor: $cor
-        );
     }
+    $veiculo = new Veiculo(
+        placa: $placa,
+        modelo: $modelo,
+        ano: $ano,
+        cor: $cor
+    );
+    $dao =  new VeiculoDAO();
     try {
-        $dao =  new VeiculoDAO();
         $resultado = $dao->insert($veiculo);
-        if ($resultado) {
-            Redirect::redirect(
-                message: "O veículo $modelo foi cadastrado com sucesso!"
-            );
-        } else {
-            Redirect::redirect("Lamento, não foi possivel cadastrar o veículo $modelo", type: 'error');
-        }
     } catch (PDOException $e) {
         Redirect::redirect("Lamento, houve um erro inesperado!", type: 'error');
+    }
+    if ($resultado) {
+        Redirect::redirect(
+            message: "O veículo $modelo foi cadastrado com sucesso!"
+        );
+    } else {
+        Redirect::redirect("Lamento, não foi possivel cadastrar o veículo $modelo", type: 'error');
     }
 }
 
@@ -191,7 +190,7 @@ function editarVeiculo()
     if (!Validacao::validarCor($cor)) {
         array_push($error, "A cor do veiculo deve conter pelo menos 4 caracteres!");
     }
-    
+
     $veiculo = new Veiculo(
         placa: $placa,
         modelo: $modelo,
@@ -199,7 +198,7 @@ function editarVeiculo()
         cor: $cor,
         id_veiculo: $code
     );
-   
+
     $dao = new VeiculoDAO();
     try {
         $resultado = $dao->update($veiculo);

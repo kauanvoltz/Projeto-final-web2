@@ -1,13 +1,133 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistema estacionamento</title>
-</head>
-<body>
-    
-</body>
-</html>
+    <title>Tela de Login</title>
 
+    <style>
+        input[type=number]::-webkit-inner-spin-button,
+        input[type=number]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #212529;
+        }
+
+        .box {
+            color: white;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(0, 0, 0, 0.3);
+            padding: 15px;
+            border-radius: 15px;
+            width: 30%;
+        }
+
+        fieldset {
+            border: 3px solid white;
+        }
+
+        legend {
+            border: 3px solid white;
+            padding: 10px;
+            text-align: center;
+            background-color: white;
+            border-radius: 8px;
+            color: black;
+        }
+
+        .inputBox {
+            position: relative;
+        }
+
+        .inputUser {
+            background: none;
+            border: none;
+            border-bottom: 1px solid white;
+            outline: none;
+            color: white;
+            font-size: 15px;
+            letter-spacing: 2px;
+            width: 100%;
+        }
+
+        .labelInput {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            pointer-events: none;
+            transition: .5s;
+        }
+        .inputUser:focus ~ .labelInput,
+        .inputUser:valid ~.labelInput{
+            top: -10px;
+            font-size: 12px;
+            color: gray;
+        }
+       #logar{
+            width: 100%;
+            border: none;
+            padding: 10px;
+            font-size: 15px;
+            cursor: pointer;
+            border-radius: 10px;
+       }
+       #logar:hover{
+        background-color: #57da74;
+       }
+      
+    </style>
+</head>
+
+<body >
+
+
+    <div class=" box">
+    <form action="src/Controller/User.php?operation=login"  method="POST">
+        <fieldset>
+            <legend> <b> Login </b></legend>
+            <br>
+            <div class="inputBox">
+                <input type="text" name="login" id="login" class="inputUser" required min="1" >
+                <label for="login" class="labelInput">Login</label>
+            </div>
+            <br>
+            <div class="inputBox">
+                <input type="password" name="password" id="password" class="inputUser" required min="1" >
+                <label for="password" class="labelInput">Senha</label>
+            </div><br>
+            
+            <button type="submit" name="submit" id="logar"> Login</button>
+            </div>
+        </fieldset>
+    </form>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   <script src="../view/js/voltar.js"></script>
+</body>
+
+</html>
