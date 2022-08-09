@@ -10,6 +10,7 @@
 </head>
 
 <body>
+
     <?php
     session_start();
     if (empty($_SESSION)) {
@@ -26,7 +27,7 @@
                     <p class="text-center">
                         <?= $_SESSION['msg_success'] ?>
                     </p>
-                    <a href="#" onclick="window.history.back()" class="underline">Voltar</a>
+                    <a href="../View/dashboard.php"  class="underline">Voltar</a>
                 </div>
             </article>
         <?php
