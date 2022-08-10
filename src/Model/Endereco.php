@@ -28,6 +28,9 @@ class Endereco
         return $this->$attribute;
     }
 
-
+    public function __set($name, $value)
+    {
+        $this->$name = $value;
+    }
 
 }

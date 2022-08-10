@@ -10,7 +10,7 @@ class Cliente
     private string $telefone;
     private Endereco $endereco;
 
-    public function __construct(string $nome,string $cpf,string $telefone,Endereco $endereco,int $id = 0)
+    public function __construct(string $nome, string $cpf, string $telefone, Endereco $endereco, int $id = 0)
     {
         $this->nome = $nome;
         $this->cpf = $cpf;
@@ -19,8 +19,13 @@ class Cliente
         $this->id = $id;
     }
 
-    public function __get($attribute)
+    public function __get($name)
     {
-        return $this->$attribute;
+        return $this->$name;
+    }
+
+    public function __set($name, $value)
+    {
+        $this->$name = $value;
     }
 }

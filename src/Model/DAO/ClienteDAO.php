@@ -10,17 +10,11 @@ class ClienteDAO implements DAO
     function insert($object)
     {
         $conexao = Conexao::getConexao();
-        $stmt = $conexao->prepare("INSERT INTO cliente VALUES (null,?,?,?,?,?,?,?,?,?,?);");
+        $stmt = $conexao->prepare("INSERT INTO cliente VALUES (null,?,?,?,?);");
         $stmt->bindParam(1, $object->cpf);
         $stmt->bindParam(2, $object->nome);
         $stmt->bindParam(3, $object->telefone);
         $stmt->bindParam(4, $object->endereco->id);
-        $stmt->bindParam(5, $object->endereco->endereco);
-        $stmt->bindParam(6, $object->endereco->numero);
-        $stmt->bindParam(7, $object->endereco->cep);
-        $stmt->bindParam(8, $object->endereco->bairro);
-        $stmt->bindParam(9, $object->endereco->cidade);
-        $stmt->bindParam(10, $object->endereco->complemento);
         return $stmt->execute();
     }
     public function findOne($id)

@@ -97,7 +97,7 @@ function inserirCliente()
                 message: $error,
                 type: 'warning'
             );
-        } else {
+        } 
             $cliente = new Cliente(
                 nome:$nomeDoCliente,
                 cpf: $cpfDoCliente,
@@ -112,23 +112,36 @@ function inserirCliente()
                 ),
                 id: $id = 0
             );
+            
+            $dao = new EnderecoDAO();
             try {
-                $dao = new ClienteDAO();
-                $dao = new EnderecoDAO();
+              
                 $resultado = $dao->insert($cliente->endereco);
                 if ($resultado) {
-                    Redirect::redirect(
-                        message: "O cliente $nomeDoCliente foi cadastrado com sucesso!"
-                    );
+                    $dados = $dao->findId();
+                    $cliente->endereco->id = $dados["id"];
+                    
+                    $dao = new ClienteDAO();
+                    $resultado = $dao->insert($cliente);
+
+                    if($resultado){
+                        Redirect::redirect(
+                            message: "O cliente $nomeDoCliente foi cadastrado com sucesso!"
+                        );
+                    }
+                    else{
+                        Redirect::redirect("Lamento, não foi possível cadastrar o cliente $nomeDoCliente", type: 'error');
+                    }
                 } else {
-                    Redirect::redirect("Lamento, não foi possível cadastrar o cliente $nomeDoCliente", type: 'error');
+                    Redirect::redirect("Lamento, não foi possível cadastrar o endereço do cliente ", type: 'error');
                 }
             } catch (PDOException $e) {
+               // echo $e->getMessage();
                 Redirect::redirect("Lamento, houve um erro inesperado!", type: 'error');
             }
         }
     
-}
+
 function removerCliente()
 {
     if (empty($_GET['code'])) {

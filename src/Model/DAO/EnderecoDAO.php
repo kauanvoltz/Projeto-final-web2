@@ -25,6 +25,11 @@ class EnderecoDAO implements DAO
         $stmt = $conexao->query("select * from endereco where id_endereco = $id");
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
+    public function findId(){
+        $conexao = Conexao::getConexao();
+        $resultado = $conexao->query("select max(id_endereco) as id from endereco;");
+        return $resultado->fetch(PDO::FETCH_ASSOC);
+    }
     public function findAll()
     {
         $conexao = Conexao::getConexao();
