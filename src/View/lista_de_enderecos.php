@@ -6,7 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
-    <title>Lista de Clientes</title>
+    <title>Lista de endereços</title>
+    
 </head>
 
 <body>
@@ -51,12 +52,14 @@
                 <thead class="">
                     <tr>
 
-                        <th scope="col">Nome</th>
-                        <th scope="col">CPF</th>
-                        <th scope="col">Telefone</th>
-                        <th scope="col">Id do endereço</th>
+                        <th scope="col">Id</th>
+                        <th scope="col">Logradouro</th>
+                        <th scope="col">Número</th>
+                        <th scope="col">CEP</th>
+                        <th scope="col">Bairro</th>
+                        <th scope="col">Cidade</th>
+                        <th scope="col">Complemento</th>
                         <th scope="col"></th>
-                        
 
                     </tr>
                 </thead>
@@ -64,25 +67,35 @@
                     <?php
                     
                     session_start();
-                    foreach ($_SESSION['lista_de_clientes'] as $cliente) :
+                    foreach ($_SESSION['lista_de_enderecos'] as $endereco) :
                     ?>
                         <tr>
                             <td>
-                                <?= $cliente['nome'] ?>
+                                <?= $endereco['id_endereco'] ?>
                             </td>
                             <td>
-                                <?= $cliente['cpf'] ?>
+                                <?= $endereco['endereco'] ?>
                             </td>
                             <td>
-                                <?= $cliente['telefone'] ?>
+                                <?= $endereco['numero'] ?>
                             </td>
                             <td>
-                                <?= $cliente['id_endereco'] ?>
+                                <?= $endereco['cep'] ?>
+                            </td>
+                            <td>
+                                <?= $endereco['bairro'] ?>
+                            </td>
+                            <td>
+                                <?= $endereco['cidade'] ?>
+                            </td>
+                            <td>
+                                <?= $endereco['complemento'] ?>
+                            </td>
+                            <td>
+                            <a style="color: white;" onclick="goBack()" href="#">Voltar</a>
                             </td>
                             
-                           <td>
-                           <a style="color: white;" href="../Controller/Cliente.php?operation=listaren">Listar endereços</a>
-                           </td>
+                           
                         </tr>
                     <?php
                     endforeach;
@@ -99,7 +112,7 @@
 
 
 
-
+            <script src="../view/js/voltar.js"></script>
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
     </body>
 

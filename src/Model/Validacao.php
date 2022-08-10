@@ -38,16 +38,16 @@ class Validacao
         return mb_strlen($telefone) >=9 && mb_strlen($telefone) < 14;
     }
     public static function validarEndereco(string $endereco){
-        return mb_strlen($endereco) >= 5;
+        return mb_strlen($endereco) >= 1;
     }
     public static function validarCep(int $cep){
         return mb_strlen($cep) == 8;
     }
     public static function validarBairro(string $bairro){
-        return mb_strlen($bairro) >= 5;
+        return mb_strlen($bairro) >= 1;
     }
     public static function validarCidade(string $cidade){
-        return mb_strlen($cidade) >= 5;
+        return mb_strlen($cidade) >= 1;
     }
    
 }

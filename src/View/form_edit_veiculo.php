@@ -103,7 +103,7 @@
 <body >
 
 <?php
-session_start();
+
 $veiculo = $_SESSION['info_veiculo'];
 ?>
     <div class=" box">

@@ -6,6 +6,7 @@ use APP\Model\Cliente;
 use APP\Model\Endereco;
 use APP\Model\DAO\EnderecoDAO;
 use APP\Model\DAO\ClienteDAO;
+use APP\Model\DAO\VeiculoDAO;
 use APP\Utils\Redirect;
 use APP\Model\Validacao;
 use Error;
@@ -22,6 +23,10 @@ switch ($_GET['operation']) {
         break;
     case 'listar':
         listarCliente();
+        break;
+    case 'listaren':
+        listarEndereco();
+        break;
     case 'consultar':
         break;
         consultarCliente();
@@ -45,15 +50,15 @@ function inserirCliente()
             message: 'Requisição inválida!'
         );
     }
-    $nomeDoCliente = $_POST["nome"];
-    $cpfDoCliente = $_POST["cpf"];
-    $telefoneDoCliente = $_POST["telefone"];
-    $enderecoDoCliente = $_POST["endereco"];
-    $numeroDoEndereco = $_POST["numero"];
-    $cepDoEndereco = $_POST["cep"];
-    $bairroDoEndereco = $_POST["bairro"];
-    $cidadeDoEndereco = $_POST["cidade"];
-    $complementoDoEndereco = $_POST["complemento"];
+    $nomeDoCliente = $_POST['nome'];
+    $cpfDoCliente = $_POST['cpf'];
+    $telefoneDoCliente = $_POST['telefone'];
+    $enderecoDoCliente = $_POST['endereco'];
+    $numeroDoEndereco = $_POST['numero'];
+    $cepDoEndereco = $_POST['cep'];
+    $bairroDoEndereco = $_POST['bairro'];
+    $cidadeDoEndereco = $_POST['cidade'];
+    $complementoDoEndereco = $_POST['complemento'];
 
     $error = array();
     if (!Validacao::validarNome($nomeDoCliente)) {
@@ -69,7 +74,7 @@ function inserirCliente()
     }
 
     if (!Validacao::validarEndereco($enderecoDoCliente)) {
-        array_push($error, "O endereço do cliente deve conter no mínimo 5 caracteres!");
+        array_push($error, "O endereço do cliente deve conter no mínimo 1 caracter!");
     }
 
     if (!Validacao::validarNumero($numeroDoEndereco)) {
@@ -81,11 +86,11 @@ function inserirCliente()
     }
 
     if (!Validacao::validarBairro($bairroDoEndereco)) {
-        array_push($error, "O bairro deve conter no mínimo 5 caracteres!");
+        array_push($error, "O bairro deve conter no mínimo 1 caracter");
     }
 
     if (!Validacao::validarCidade($cidadeDoEndereco)) {
-        array_push($error, "A cidade deve conter no mínimo 5 caracteres!");
+        array_push($error, "A cidade deve conter no mínimo 1 caracter");
     }
 
 
@@ -178,9 +183,27 @@ function listarCliente()
             Redirect::redirect(message: ['Não existem clientes cadastrados!'], type: 'error');
         }
     } catch (PDOException $e) {
-        Redirect::redirect("Lamento, hoive um erro inseperado!", type: 'erro');
+        Redirect::redirect("Lamento, houve um erro inesperado!", type: 'erro');
     }
 }
+function listarEndereco()
+{
+    try {
+        session_start();
+        $dados = new EnderecoDAO();
+        $endereco = $dados->findAll();
+        if ($endereco) {
+            $_SESSION['lista_de_enderecos'] = $endereco;
+            header('location:../View/lista_de_enderecos.php');
+        } else {
+            Redirect::redirect(message: ['Não existem enderecos cadastrados!'], type: 'error');
+        }
+    } catch (PDOException $e) {
+        Redirect::redirect("Lamento, houve um erro inesperado!", type: 'erro');
+    }
+}
+
+
 
 function consultarCliente()
 {
@@ -210,16 +233,16 @@ function editarCliente()
         Redirect::redirect(message: 'Requisição inválida!', type: 'error');
     }
 
-    $code = $_POST["code"];
-    $nomeDoCliente = $_POST["nome"];
-    $cpfDoCliente = $_POST["cpf"];
-    $telefoneDoCliente = $_POST["telefone"];
-    $enderecoDoCliente = $_POST["endereco"];
-    $numeroDoEndereco = $_POST["numero"];
-    $cepDoEndereco = $_POST["cep"];
-    $bairroDoEndereco = $_POST["bairro"];
-    $cidadeDoEndereco = $_POST["cidade"];
-    $complementoDoEndereco = $_POST["complemento"];
+    $code = $_POST['code'];
+    $nomeDoCliente = $_POST['nome'];
+    $cpfDoCliente = $_POST['cpf'];
+    $telefoneDoCliente = $_POST['telefone'];
+    $enderecoDoCliente = $_POST['endereco'];
+    $numeroDoEndereco = $_POST['numero'];
+    $cepDoEndereco = $_POST['cep'];
+    $bairroDoEndereco = $_POST['bairro'];
+    $cidadeDoEndereco = $_POST['cidade'];
+    $complementoDoEndereco = $_POST['complemento'];
 
     $error = array();
     if (!Validacao::validarNome($nomeDoCliente)) {
@@ -253,6 +276,9 @@ function editarCliente()
     if (!Validacao::validarCidade($cidadeDoEndereco)) {
         array_push($error, "A cidade deve conter no mínimo 5 caracteres!");
     }
+
+
+
     $cliente = new Cliente(
         nome: $nomeDoCliente,
         cpf: $cpfDoCliente,

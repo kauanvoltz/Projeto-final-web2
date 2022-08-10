@@ -32,7 +32,7 @@
                         <a class="nav-link " aria-current="page" href="form_add_veiculos.php">Cadastrar veiculos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="#">Listar clientes</a>
+                        <a class="nav-link" aria-current="page" href="../Controller/Cliente.php?operation=listar">Listar clientes</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link disabled" aria-current="page" href="#">Listar veiculos</a>
