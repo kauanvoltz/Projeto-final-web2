@@ -5,7 +5,7 @@ CREATE TABLE IF NOT EXISTS endereco (
   id_endereco INT NOT NULL AUTO_INCREMENT,
   endereco VARCHAR(35) NOT NULL,
   numero VARCHAR(10) NOT NULL,
-  cep CHAR(7) NOT NULL,
+  cep CHAR(8) NOT NULL,
   bairro VARCHAR(25) NOT NULL,
   cidade VARCHAR(25) NOT NULL,
   complemento VARCHAR(10) NULL,

@@ -26,7 +26,7 @@ class ClienteDAO implements DAO
     public function findAll()
     {
         $conexao = Conexao::getConexao();
-        $stmt = $conexao->query("select * from cliente;");
+        $stmt = $conexao->query("select * from cliente;" );
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
     public function update($object)

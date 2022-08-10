@@ -11,7 +11,7 @@
 
 <body>
 
-    <body style="background-color: #343a40;">
+    <body>
 
 
         <nav class="navbar navbar-dark bg-dark">
@@ -64,7 +64,18 @@
                     </tr>
                 </thead>
                 <tbody class="table-group-divider">
-              
+                    <?php
+                    foreach ($_SESSION['lista_de_clientes'] as $cliente) :
+                    ?>
+                        <tr>
+                            <td>
+                                <?= $cliente['nome'] ?>
+                            </td>
+                           
+                        </tr>
+                    <?php
+                    endforeach;
+                    ?>
                 </tbody>
             </table>
 
