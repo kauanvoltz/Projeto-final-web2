@@ -77,7 +77,7 @@ function inserirCliente()
         }
 
         if (!Validacao::validarCep($cepDoEndereco)) {
-            array_push($error, "O CEP deve conter 7 caracteres!");
+            array_push($error, "O CEP deve conter 8 caracteres!");
         }
 
         if (!Validacao::validarBairro($bairroDoEndereco)) {
@@ -88,10 +88,7 @@ function inserirCliente()
             array_push($error, "A cidade deve conter no mínimo 5 caracteres!");
         }
 
-        if (!Validacao::validarComplemento($complementoDoEndereco)) {
-            array_push($error, "O complemento deve conter no mínimo 3 caracteres!");
-        }
-
+      
         if ($error) {
             Redirect::redirect(
                 message: $error,
